@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Publicis</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <!-- 
   below you will find a link to download a PSD and Storyboard. Please use this to build a 300x250 animated advertisement using HTML/CSS/JavaScript with the GreenSock plugin.
@@ -17,8 +18,21 @@
     - The entire banner should be clickable on all frames to one URL: https://www.google.com
   -->
 <body>
-
-  <section></section>
+  <img src="assets/layout.png" alt="">
+  <section class="bannerContainer">
+    <!-- links the whole banner to specified URL -->
+    <a class="clickable" href="https://www.google.com/" target="_blank">
+      <div class="secondBanner">
+        <div class="banner">
+          <div class="textContainer">
+            <img class="textDisplayed" alt="">
+          </div>
+        </div>
+      </div>
+    </a>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
   <script src="scripts/script.js"></script>
+  
 </body>
 </html>
