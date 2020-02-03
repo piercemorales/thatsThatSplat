@@ -204,9 +204,15 @@ a {
   width: auto;
   border: 1px solid black;
   overflow: hidden;
+  position: relative;
 }
 
-.banner {
+.finalBanner {
+  position: absolute;
+  background-image: url(../../assets/fourthBackground.png);
+}
+
+.banner, .finalBanner {
   width: 300px;
   height: 250px;
 }
@@ -219,4 +225,23 @@ a {
 
 .textContainer .textDisplayed {
   margin: 20px auto;
+}
+
+.finalTextContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.finalText,
+.finalSubText {
+  margin: 20px 20px 0px 20px;
+}
+
+.finalSubText {
+  margin-top: 5px;
 }

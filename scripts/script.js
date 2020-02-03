@@ -1,11 +1,19 @@
 const bannerBG = document.querySelector('.banner');
 const textDisplayed = document.querySelector('.textDisplayed');
+const finalText = document.querySelector('.finalText');
+const finalSubText = document.querySelector('.finalSubText');
+// Set a second banner in order to have the 2nd animation smooth
 const secondBanner = document.querySelector('.secondBanner');
+// final banner for the final slide
+const finalBanner = document.querySelector('.finalBanner');
+
 
 setMainBG = () => {
-gsap.set(bannerBG,{backgroundImage:'url(assets/firstBackground.png'})
-  
-gsap.set(textDisplayed, {attr:{src:'assets/firstText.png'}})
+  gsap.set(finalBanner,{opacity:0,})
+  gsap.set(bannerBG,{backgroundImage:'url(assets/firstBackground.png'})
+  gsap.set(textDisplayed, {attr:{src:'assets/firstText.png'}})
+  gsap.set(finalText, {attr:{ src:'assets/fourthMainText.png' }})
+  gsap.set(finalSubText, {attr:{ src:'assets/fourthSubText.png' }})
 }
 
 // First Animation
@@ -19,10 +27,8 @@ gsap.from(textDisplayed, {
   onComplete: fadeOutFirst
 });
 
-
 // fading out the first animation
 function fadeOutFirst() {
-  console.log('this fades out first animation');
   gsap.to(textDisplayed,{
     opacity:0,
     y: -20,
@@ -41,8 +47,6 @@ function fadeOutFirst() {
 //Second Animation
 
 function runSecond() {
-  console.log('first is complete')
-
   gsap.to(textDisplayed, {
     duration:3,
     opacity:1,
@@ -59,16 +63,18 @@ function runSecond() {
     backgroundImage: 'url(assets/secondBackground.png',
     
   })
-  gsap.set(secondBanner, {
-    duration:1,
+
+  // Used timeout to delay the new background image load 
+  setTimeout(function(){gsap.set(secondBanner, {
+    duration: 1,
     backgroundImage: 'url(assets/thirdBackground.png'
-  })
+  })},1000)
+  
 }
 
 // fading out the second animation and setting the second banner background image
 function fadeOutSecond() {
   
-
   gsap.to(textDisplayed, {
     opacity: 0,
     x: -20,
@@ -83,14 +89,15 @@ function fadeOutSecond() {
   })
 }
 
+// Third Slide Animation
 function runThird() {
   gsap.to(textDisplayed, {
-    duration: 1,
+    duration: 2,
     opacity: 1,
     ease: 'power3.out',
     x: 0,
     attr: { src: 'assets/thirdText.png' },
-    // onComplete: fadeOutSecond,
+    onComplete: fadeOutThird
   })
 
   gsap.to(bannerBG, {
@@ -99,6 +106,47 @@ function runThird() {
     opacity: 1,
     ease: 'power3.out',
     backgroundImage: 'none',
-    // onComplete: runThird
   })
+
+
+  setTimeout(function () {
+    gsap.to(finalBanner, {
+      duration: 1,
+      opacity:1,
+    })
+    }, 2000)
+  }
+
+//third fade out animation and replacing new background
+function fadeOutThird() {
+
+  gsap.to(textDisplayed, {
+    duration: 0.5,
+    opacity: 0,
+    ease: 'power3.out',
+  })
+
+  gsap.to(secondBanner, {
+    duration:1.5,
+    opacity: 0,
+    onComplete: runFourth,
+
+  })
+}
+
+// Final Slide Animation
+function runFourth() {
+
+  gsap.to(finalText, {
+    duration: 3,
+    opacity: 1,
+    ease: 'power3.out',
+    zIndex: 10
+  })
+  gsap.to(finalSubText, {
+    duration:3,
+    opacity: 1,
+    ease: 'power3.out',
+  })
+
 }
