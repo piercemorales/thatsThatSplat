@@ -1,11 +1,6 @@
 
-// A couple things to consider:
-//     - All code and images should zip up to be less than 200k
-//     - Animation time should not exceed 15 seconds
-//     - Please include a 1px black border around the entire ad
-//     - The entire banner should be clickable on all frames to one URL: https://www.google.com
-// below you will find a link to download a PSD and Storyboard. Please use this to build a 300x250 animated advertisement using HTML/CSS/JavaScript with the GreenSock plugin.
 .bannerContainer {
+  margin-top: 20px;
   display:flex;
   justify-content:center;
 }
@@ -19,6 +14,12 @@
 .finalBanner {
   position: absolute;
   background-image:url(../../assets/fourthBackground.png);
+}
+
+.banner,
+.secondBanner,
+.finalBanner {
+  background-size: cover;
 }
 
 .banner,.finalBanner {
@@ -46,4 +47,62 @@
 
 .finalSubText{
   margin-top:5px;
+}
+
+
+.getMoreBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  padding: 8px 25px 4px 25px;
+  background-color: #a01e1e;
+  border-radius: 2px;
+  
+}
+
+// glare effect
+.clickable .getMoreBtn {
+  transition: 1s;
+  &:focus{
+    outline: 0;
+  }
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,0.5);
+    width: 10px;
+    height: 80%;
+    left: 0;
+    top: 0;
+    opacity: .6;
+    filter: blur(5px);
+    transform: translateX(00px)  skewX(-15deg);
+  }
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,0.2);
+    height: 100%;
+    left: 0px;
+    top: 0;
+    opacity: 0;
+    transform: translateX(-50px) skewX(-15deg);
+  }
+}
+.clickable:hover .getMoreBtn {
+  background: #e24b4b;
+    cursor: pointer;
+    &:before{
+      transform: translateX(100px)  skewX(-15deg);  
+      opacity: 0.1;
+      transition: 1s;
+    }
+    &:after{
+      transform: translateX(300px) skewX(-15deg);  
+      opacity: 0;
+      transition: 1s;
+    }
 }

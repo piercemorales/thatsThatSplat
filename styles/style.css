@@ -192,6 +192,7 @@ a {
 }
 
 .bannerContainer {
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,6 +211,12 @@ a {
 .finalBanner {
   position: absolute;
   background-image: url(../../assets/fourthBackground.png);
+}
+
+.banner,
+.secondBanner,
+.finalBanner {
+  background-size: cover;
 }
 
 .banner, .finalBanner {
@@ -240,8 +247,78 @@ a {
 .finalText,
 .finalSubText {
   margin: 20px 20px 0px 20px;
+  opacity: 0;
 }
 
 .finalSubText {
   margin-top: 5px;
+}
+
+.getMoreBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  padding: 8px 25px 4px 25px;
+  background-color: #a01e1e;
+  border-radius: 2px;
+}
+
+.clickable .getMoreBtn {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.clickable .getMoreBtn:focus {
+  outline: 0;
+}
+
+.clickable .getMoreBtn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 10px;
+  height: 80%;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transform: translateX(0px) skewX(-15deg);
+          transform: translateX(0px) skewX(-15deg);
+}
+
+.clickable .getMoreBtn:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  height: 100%;
+  left: 0px;
+  top: 0;
+  opacity: 0;
+  -webkit-transform: translateX(-50px) skewX(-15deg);
+          transform: translateX(-50px) skewX(-15deg);
+}
+
+.clickable:hover .getMoreBtn {
+  background: #e24b4b;
+  cursor: pointer;
+}
+
+.clickable:hover .getMoreBtn:before {
+  -webkit-transform: translateX(100px) skewX(-15deg);
+          transform: translateX(100px) skewX(-15deg);
+  opacity: 0.1;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.clickable:hover .getMoreBtn:after {
+  -webkit-transform: translateX(300px) skewX(-15deg);
+          transform: translateX(300px) skewX(-15deg);
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
